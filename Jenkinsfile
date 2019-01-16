@@ -20,6 +20,7 @@ node {
             sh 'hostname'
             sh 'docker run -d -p 8000:8000 the1andonlydave/hellonode'
             sh 'sleep 5'
+/* If we don't find "Hello" in the curl-result we break the pipeline here. */
             sh 'curl -s http://172.17.0.1:8000/ | grep "Hello"'
 /*        app.inside {
             sh 'echo "Tests beginning"'
