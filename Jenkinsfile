@@ -20,13 +20,13 @@ node {
             sh 'hostname'
             sh 'docker run -d -p 8000:8000 the1andonlydave/hellonode'
             sh 'sleep 5'
-            sh 'curl -v http://172.17.0.1:8000/'
-        app.inside {
+            sh 'curl  http://172.17.0.1:8000/'
+/*        app.inside {
             sh 'echo "Tests beginning"'
             sh 'hostname'
             sh 'curl -v http://127.0.0.1:8000/'
 
-        }
+        }*/
     }
 
     stage('Push image') {
