@@ -19,9 +19,9 @@ node {
          * For this example, we're using a Volkswagen-type approach ;-) */
 
         app.inside {
-            sh 'echo "Tests passed"'
-#	    sh 'docker run -d -p 8000:8000 --name hellonode hellonode'
-#	    sh 'sleep 5'
+            sh 'echo "Tests beginning"'
+/*	    sh 'docker run -d -p 8000:8000 --name hellonode hellonode'
+	    sh 'sleep 5'*/
             sh 'curl -v https://localhost:8000/'
 
         }
