@@ -20,12 +20,10 @@ node {
             sh 'hostname'
             sh 'docker run -d -p 8000:8000 --name hellonode the1andonlydave/hellonode'
             sh 'sleep 5'
-            sh 'curl -v https://localhost:8000/'
+            sh 'curl -v https://172.17.0.1:8000/'
         app.inside {
             sh 'echo "Tests beginning"'
             sh 'hostname'
-	    sh 'docker run -d -p 8000:8000 --name hellonode hellonode'
-	    sh 'sleep 5'
             sh 'curl -v https://localhost:8000/'
 
         }
