@@ -48,6 +48,5 @@ node {
         } */
 	sh 'docker login -u the1andonlydavepublic -p the1andonlydavepublic https://registry.hub.docker.com'
 	sh 'docker push the1andonlydavepublic/hellonode'
-        }
     }
 }
