@@ -24,7 +24,7 @@ node {
         app.inside {
             sh 'echo "Tests beginning"'
             sh 'hostname'
-            sh 'curl -v http://localhost:8000/'
+            sh 'curl -v http://127.0.0.1:8000/'
 
         }
     }
