@@ -48,7 +48,8 @@ node {
         } */
 	sh 'docker login -u the1andonlydavepublic -p the1andonlydavepublic'
 	sh 'docker push the1andonlydavepublic/hellonode'
-	sh 'docker push the1andonlydavepublic/hellonode:${env.BUILD_NUMBER}'
+	/*" statt ' zur Variablensubstition*/
+	sh "docker push the1andonlydavepublic/hellonode:${env.BUILD_NUMBER}"
 
     }
 }
