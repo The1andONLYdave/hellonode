@@ -1,0 +1,19 @@
+version: '3.7'
+
+services:
+  meincontainer:
+    container_name: jenkins
+#    image: jenkins/jenkins:lts
+#    image: docker pull nimmis/apache-php7
+    build: .
+    volumes:
+      - './jenkins_home://var/jenkins_home/' 
+      - '/var/run/docker.sock:/var/run/docker.sock'
+#    user: '501:0'
+    ports:
+#    - "80:80"
+    - "8080:8080"
+    - "50000:50000"
+#    environment:
+#    - DEBUG=1337
+#    - dev=0
