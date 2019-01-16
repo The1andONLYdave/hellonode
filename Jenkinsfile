@@ -18,7 +18,7 @@ node {
         /* Ideally, we would run a test framework against our image.
          * For this example, we're using a Volkswagen-type approach ;-) */
             sh 'hostname'
-            sh 'docker run -d -p 8000:8000 --name hellonode hellonode'
+            sh 'docker run -d -p 8000:8000 --name hellonode the1andonlydave/hellonode'
             sh 'sleep 5'
             sh 'curl -v https://localhost:8000/'
         app.inside {
