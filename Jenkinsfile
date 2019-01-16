@@ -17,11 +17,17 @@ node {
     stage('Test image') {
         /* Ideally, we would run a test framework against our image.
          * For this example, we're using a Volkswagen-type approach ;-) */
+            sh 'docker stop myjob'
+	    sh 'docker rm -f myjob && echo "container myjob removed" || echo "container myjob does not exist"'
+            
             sh 'hostname'
-            sh 'docker run -d -p 8000:8000 the1andonlydave/hellonode'
+            sh 'docker run -d -p 8000:8000 --name myjob the1andonlydave/hellonode'
             sh 'sleep 5'
 /* If we don't find "Hello" in the curl-result we break the pipeline here. */
             sh 'curl -s http://172.17.0.1:8000/ | grep "Hello"'
+            
+            sh 'docker stop myjob'
+
 /*        app.inside {
             sh 'echo "Tests beginning"'
             sh 'hostname'
