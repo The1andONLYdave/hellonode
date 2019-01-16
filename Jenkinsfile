@@ -44,7 +44,8 @@ node {
          * Pushing multiple tags is cheap, as all the layers are reused. */
 /*        docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
             app.push("${env.BUILD_NUMBER}")
-            app.push("latest")*/
+            app.push("latest")
+        } */
 	sh 'docker login -u the1andonlydavepublic -p the1andonlydavepublic https://registry.hub.docker.com'
 	sh 'docker push the1andonlydavepublic/hellonode'
         }
