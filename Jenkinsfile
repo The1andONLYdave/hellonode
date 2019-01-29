@@ -21,6 +21,15 @@ node {
             /* If we don't find "Hello" in the curl-result we break the pipeline here. */
             sh 'curl -s http://172.17.0.1:8000/ | grep "Hello"'
     }
+    
+    stage('Test image with docker-compose') {
+           sh 'docker stop myjob'
+           sh 'docker rm -f myjob && echo "container myjob removed" || echo "container myjob does not exist"'
+            sh 'hostname'
+            sh 'docker-compose -f docker-compose.yml up --build -d'
+            /*something missing*/
+            sh 'docker-compose run test'
+    }
 
     stage('Push image') {
         /* Finally, we'll push the image with two tags:
@@ -37,6 +46,7 @@ node {
     post {
         always {
             sh 'docker stop myjob'
+            sh "docker-compose -f docker-compose.yml down"
         }
     }
 

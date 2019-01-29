@@ -1,0 +1,11 @@
+version: "3"
+services:
+   test:
+      build: ./tester
+   webserver:
+      build: .
+      ports:  
+        - "8000:8000"
+      environment:
+        - DEBUG=1337
+        - dev=0
