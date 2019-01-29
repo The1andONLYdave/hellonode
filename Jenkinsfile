@@ -13,7 +13,6 @@ node {
     }
 
     stage('Test image') {
-           sh 'docker stop myjob'
 	       sh 'docker rm -f myjob && echo "container myjob removed" || echo "container myjob does not exist"'
             sh 'hostname'
             sh 'docker run -d --rm -p 8000:8000 --name myjob the1andonlydavepublic/hellonode'
@@ -23,7 +22,6 @@ node {
     }
     
     stage('Test image with docker-compose') {
-           sh 'docker stop myjob'
            sh 'docker rm -f myjob && echo "container myjob removed" || echo "container myjob does not exist"'
             sh 'hostname'
             sh 'docker-compose -f docker-compose.yml up --build -d'
