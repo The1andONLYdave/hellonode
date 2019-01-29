@@ -17,7 +17,7 @@ node {
             sh 'hostname'
             sh 'docker run -d --rm -p 8000:8000 --name myjob the1andonlydavepublic/hellonode'
             sh 'sleep 5'
-            /* If we don't find "Hello" in the curl-result we break the pipeline here. */
+            If we don't find "Hello" in the curl-result we break the pipeline here. 
             sh 'curl -s http://172.17.0.1:8000/ | grep "Hello"'
             sh 'docker stop myjob'
     } */
