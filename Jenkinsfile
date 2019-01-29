@@ -12,21 +12,21 @@ node {
         sh 'docker build -t the1andonlydavepublic/hellonode .'
     }
 
-    stage('Test image') {
+    /* stage('Test image') {
 	       sh 'docker rm -f myjob && echo "container myjob removed" || echo "container myjob does not exist"'
             sh 'hostname'
             sh 'docker run -d --rm -p 8000:8000 --name myjob the1andonlydavepublic/hellonode'
             sh 'sleep 5'
             /* If we don't find "Hello" in the curl-result we break the pipeline here. */
             sh 'curl -s http://172.17.0.1:8000/ | grep "Hello"'
-    }
+            sh 'docker stop myjob'
+    } */
     
     stage('Test image with docker-compose') {
-           sh 'docker rm -f myjob && echo "container myjob removed" || echo "container myjob does not exist"'
-            sh 'hostname'
             sh 'docker-compose -f docker-compose.yml up --build -d'
-            /*something missing*/
+            /*something missing?*/
             sh 'docker-compose run test'
+            sh "docker-compose -f docker-compose.yml down"
     }
 
     stage('Push image') {
@@ -41,11 +41,11 @@ node {
 	sh "docker push the1andonlydavepublic/hellonode:${env.BUILD_NUMBER}"
     }
     
-    post {
+    /* post {
         always {
             sh 'docker stop myjob'
             sh "docker-compose -f docker-compose.yml down"
         }
-    }
+    } */
 
 }
