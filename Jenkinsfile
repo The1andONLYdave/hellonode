@@ -24,7 +24,7 @@ node {
     
     stage('Test image with docker-compose') {
             sh 'docker-compose -f docker-compose.yml up --build -d'
-            /*something missing?*/
+            /*something missing*/
             sh 'docker-compose run test'
             sh "docker-compose -f docker-compose.yml down"
     }
